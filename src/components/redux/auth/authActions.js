@@ -1,22 +1,22 @@
-import axios from 'axios';
-import { createAsyncThunk } from '@reduxjs/toolkit';
+// import axios from 'axios';
+// import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.default.baseUrl = 'https://connections-api.herokuapp.com';
+// axios.default.baseUrl = 'https://connections-api.herokuapp.com';
 
-export const register = createAsyncThunk('auth/register', async credentials => {
-  try {
-    const { data } = await axios.post('/users/signup', credentials);
-    return data;
-  } catch (error) {
-    // обработка ошибки
-  }
-});
+// export const register = createAsyncThunk('auth/register', async credentials => {
+//   try {
+//     const { data } = await axios.post('/users/signup', credentials);
+//     return data;
+//   } catch (error) {
+//     // обработка ошибки
+//   }
+// });
 
-export const login = createAsyncThunk('auth/login', async credentials => {
-  try {
-    const { data } = await axios.post('/users/signup', credentials);
-    return data;
-  } catch (error) {
-    // обработка ошибки
-  }
-});
+// export const login = createAsyncThunk('auth/login', async credentials => {
+//   try {
+//     const { data } = await axios.post('/users/signup', credentials);
+//     return data;
+//   } catch (error) {
+//     // обработка ошибки
+//   }
+// });
