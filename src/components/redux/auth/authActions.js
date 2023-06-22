@@ -1,20 +1,16 @@
-// import axios from 'axios';
+import axios from 'axios';
 // import { createAsyncThunk } from '@reduxjs/toolkit';
 
-// axios.default.baseUrl = 'https://connections-api.herokuapp.com';
 
-// export const register = createAsyncThunk('auth/register', async credentials => {
-//   try {
-//     const { data } = await axios.post('/users/signup', credentials);
-//     return data;
-//   } catch (error) {
-//     // обработка ошибки
-//   }
-// });
+const instance = axios.create({baseUrl: 'https://connections-api.herokuapp.com'})
 
-// export const login = createAsyncThunk('auth/login', async credentials => {
+export const signUp = async body => {
+    return await instance.post('/users/signup', body)
+};
+
+// export const login = createAsyncThunk('auth/login', async body => {
 //   try {
-//     const { data } = await axios.post('/users/signup', credentials);
+//     const { data } = await axios.post('/users/signup', body);
 //     return data;
 //   } catch (error) {
 //     // обработка ошибки

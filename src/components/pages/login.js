@@ -15,9 +15,10 @@ import { Link } from 'react-router-dom'
 
     const handleSubmit = e => {
         e.preventDefault();
-        dispatch(authActions.login({email, password}));
-        setEmail('');
-        setPassword('');
+        console.log({email, password });
+        // dispatch(authActions.login({email, password}));
+        // setEmail('');
+        // setPassword('');
     };
 
 

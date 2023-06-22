@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { authActions } from '../redux/auth/authActions';
+import { signUp } from '../redux/auth/authActions';
 import { Link } from 'react-router-dom'
 
  const Registration = () => {
-  const dispatch = useDispatch();
+//   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
@@ -19,9 +19,16 @@ import { Link } from 'react-router-dom'
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(authActions.login({ email, password }));
-    setEmail('');
-    setPassword('');
+    // console.log({name,  email, password });
+
+    signUp({
+        name,
+        email,
+        password
+      })
+    // dispatch(authActions.login({ email, password }));
+    // setEmail('');
+    // setPassword('');
   };
 
   return (
@@ -49,7 +56,7 @@ import { Link } from 'react-router-dom'
           />
         </label>
         <button type="submit" disabled={!email || !password}>
-          Login
+          Sign up
         </button>
         <Link to="/Login"> Login</Link>
       </form>
