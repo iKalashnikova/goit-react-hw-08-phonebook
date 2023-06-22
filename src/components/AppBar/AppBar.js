@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 
-export const AppBar = () => {
+const AppBar = () => {
 
   return (
 <div>
@@ -17,3 +17,5 @@ export const AppBar = () => {
 </div>
   )
 };
+
+export default AppBar;

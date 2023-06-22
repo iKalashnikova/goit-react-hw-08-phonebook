@@ -2,7 +2,7 @@ import  { useState, useDispatch } from "react";
 import {authActions} from '../redux/auth/authActions';
 import { Link } from 'react-router-dom'
 
-export const Login =  () => {
+ const Login =  () => {
     const dispatch = useDispatch();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -49,3 +49,6 @@ disabled={!email||!password}
 </div>
     )
 }
+
+
+export default Login;

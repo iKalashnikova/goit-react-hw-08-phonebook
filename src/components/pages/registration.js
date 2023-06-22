@@ -2,7 +2,7 @@ import { useState, useDispatch } from 'react';
 import { authActions } from '../redux/auth/authActions';
 import { Link } from 'react-router-dom'
 
-export const Registration = () => {
+ const Registration = () => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -55,3 +55,5 @@ export const Registration = () => {
     </div>
   );
 };
+
+export default Registration;
