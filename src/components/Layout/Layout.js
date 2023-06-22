@@ -14,4 +14,4 @@ import  AppBar from '../AppBar/AppBar';
   );
 };
 
-export default Layout
+export default Layout;
