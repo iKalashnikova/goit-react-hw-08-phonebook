@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { register, login } from '../redux/auth/authActions';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
  const Registration = () => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
-
+const navigate = useNavigate()
   const handleChange = ({ target: { name, value } }) => {
     name === 'email'
       ? setEmail(value)
@@ -20,9 +20,11 @@ import { Link } from 'react-router-dom'
   const handleSubmit = e => {
     e.preventDefault();
     console.log({name,  email, password });
-    // dispatch(authActions.login({ email, password }));
-    // setEmail('');
-    // setPassword('');
+    dispatch(register({ name, email, password }));
+    setEmail('');
+    setPassword('');
+    setName('');
+    navigate('/Login')
   };
 
   return (
@@ -49,8 +51,8 @@ import { Link } from 'react-router-dom'
             onChange={handleChange}
           />
         </label>
-        <button type="submit" disabled={!email || !password}>
-          Login
+        <button type="submit" disabled={!email || !password || !name}>
+          Sign up
         </button>
         <Link to="/Login"> Login</Link>
       </form>

@@ -12,11 +12,11 @@ export const register = createAsyncThunk('auth/register', async (credentials, th
   }
 });
 
-export const login = createAsyncThunk('auth/login', async credentials => {
+export const login = createAsyncThunk('auth/login', async (credentials, thunkAPI) => {
   try {
     const { data } = await axios.post('/users/login', credentials);
     return data;
   } catch (error) {
-    // обработка ошибки
+    return thunkAPI.rejectWithValue(error.message)
   }
 });
