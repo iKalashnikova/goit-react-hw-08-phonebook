@@ -1,18 +1,22 @@
 import axios from 'axios';
-// import { createAsyncThunk } from '@reduxjs/toolkit';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
+axios.default.baseUrl = 'https://connections-api.herokuapp.com';
 
-const instance = axios.create({baseUrl: 'https://connections-api.herokuapp.com'})
+export const register = createAsyncThunk('auth/register', async (credentials, thunkAPI) => {
+  try {
+    const res = await axios.post('/users/signup', credentials);
+    return res.data;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message)
+  }
+});
 
-export const signUp = async body => {
-    return await instance.post('/users/signup', body)
-};
-
-// export const login = createAsyncThunk('auth/login', async body => {
-//   try {
-//     const { data } = await axios.post('/users/signup', body);
-//     return data;
-//   } catch (error) {
-//     // обработка ошибки
-//   }
-// });
+export const login = createAsyncThunk('auth/login', async credentials => {
+  try {
+    const { data } = await axios.post('/users/login', credentials);
+    return data;
+  } catch (error) {
+    // обработка ошибки
+  }
+});

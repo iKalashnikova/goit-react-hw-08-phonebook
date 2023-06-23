@@ -1,10 +1,11 @@
+import { UserMenu } from 'components/userMenu/userMenu';
 import { NavLink } from 'react-router-dom';
 
 const AppBar = () => {
 
   return (
-<div>
   <header>
+    {/* <Navigation/> */}
     <nav>
     <ul>
       <li>
@@ -13,8 +14,8 @@ const AppBar = () => {
       <NavLink to="/Login">Login</NavLink>
     </ul>
     </nav>
+    {/* {isLoggedIn ? <UserMenu/> : <AuthNav/>} */}
   </header>
-</div>
   )
 };
 
