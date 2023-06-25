@@ -1,52 +1,55 @@
-import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { register, login, getProfile } from './authActions';
+import { createSlice } from '@reduxjs/toolkit';
+import { register, login, logOut, refreshUser } from './authActions';
 
 const handlePending = (state, { payload }) => {
-  state.isLoading = true;
+  state.isLoggedIn = false;
 };
 const handleFulfilled = (state, { payload }) => {
   state.user = payload.user;
-  state.isLoading = false;
+  state.isLoggedIn = true;
   state.error = '';
   state.token = payload.token;
 };
-const handleFulfilledProfile = (state, { payload }) => {
-  state.isLoading = false;
-  state.error = '';
-  state.profile = payload};
 
 const handleRejected = (state, { payload }) => {
-  state.isLoading = false;
+  state.isLoggedIn = false;
   state.error = '';
 };
+
+const handleRefresh = (state, { payload }) => {
+  state.user = payload.user;
+  state.isLoggedIn = true;
+};
+
+const handleLogOut = state => {
+  state.user = { name: null, email: null };
+  state.isLoggedIn = false;
+  state.error = '';
+  state.token = null;
+}
 const authSlice = createSlice({
   name: 'auth',
   initialState: {
     user: { name: null, email: null },
     token: null,
-    isLoading: false,
-    profile: null
-    // isRefreshing: false,
-  },
-  reducers: {
-    logOut() {
-      return {
-        user: { name: null, email: null },
-        profile: null,
-        token: "",
-      };
-    }
+    isLoggedIn: false,
+    isRefreshing: false,
   },
   extraReducers: builder =>
     builder
       .addCase(register.pending, handlePending)
       .addCase(register.fulfilled, handleFulfilled)
       .addCase(register.rejected, handleRejected)
+      .addCase(login.pending, handlePending)
       .addCase(login.fulfilled, handleFulfilled)
-      .addCase(getProfile.fulfilled, handleFulfilledProfile)
-      .addMatcher(isAnyOf(login.pending, getProfile.pending), handlePending)
-      .addMatcher(isAnyOf(login.rejected, getProfile.rejected), handleRejected)
+      .addCase(login.rejected, handleRejected)
+      .addCase(logOut.pending, handlePending)
+      .addCase(logOut.fulfilled, handleLogOut)
+      .addCase(logOut.rejected, handleRejected)
+      .addCase(refreshUser.pending, handlePending)
+      .addCase(refreshUser.fulfilled, handleRefresh)
+      .addCase(refreshUser.rejected, handleRejected)
 });
 
 export const authReducer = authSlice.reducer;
-export const {logOut} = authSlice.actions;
+

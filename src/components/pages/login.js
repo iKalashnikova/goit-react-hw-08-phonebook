@@ -8,12 +8,12 @@ import { Link, useNavigate } from 'react-router-dom'
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const isAuth = useSelector(state => state.auth.token);
-    const navigate = useNavigate();
+    // const isAuth = useSelector(state => state.auth.token);
+    // const navigate = useNavigate();
 
-    useEffect(() => {
-        isAuth && navigate('/contacts')
-    }, [isAuth, navigate])
+    // useEffect(() => {
+    //     isAuth && navigate('/contacts')
+    // }, [isAuth, navigate])
 
     const handleChange = ({target: {name, value}}) => {
         name==='email'?setEmail(value):setPassword(value);

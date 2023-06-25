@@ -8,7 +8,7 @@ import { Link, useNavigate } from 'react-router-dom'
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
-const navigate = useNavigate();
+// const navigate = useNavigate();
 
   const handleChange = ({ target: { name, value } }) => {
     name === 'email'
@@ -25,7 +25,7 @@ const navigate = useNavigate();
     setEmail('');
     setPassword('');
     setName('');
-    navigate('/Login')
+    // navigate('/Login')
   };
 
   return (
