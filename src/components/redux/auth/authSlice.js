@@ -17,8 +17,9 @@ const handleRejected = (state, { payload }) => {
 };
 
 const handleRefresh = (state, { payload }) => {
-  state.user = payload.user;
+  state.user = payload;
   state.isLoggedIn = true;
+  state.isRefreshing = false;
 };
 
 const handleLogOut = state => {

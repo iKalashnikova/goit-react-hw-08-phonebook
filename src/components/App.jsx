@@ -10,9 +10,11 @@ import { useAuth } from '../hooks/useAuth';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { refreshUser } from './redux/auth/authActions';
+import { RestrictedRoute } from './RestrictedRoute';
+import { PrivateRoute } from './PrivateRoute';
 
 const App = () => {
-  const {isLoggedIn} = useAuth();
+  // const {isLoggedIn} = useAuth();
 const dispatch = useDispatch()
 const {isRefreshing} = useAuth();
 
@@ -25,9 +27,9 @@ useEffect(() => {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element ={<Home/>}/>
-        <Route path="/Login" element={isLoggedIn ?<PhoneBooks/>:<Login />} />
-        <Route path="/Registration" element={isLoggedIn ?<PhoneBooks/>: <Registration />} />
-        <Route path="/contacts" element={<PhoneBooks />} />
+        <Route path="/Login" element={<RestrictedRoute component={<Login/>} redirectTo='/contacts'/>} />
+        <Route path="/Registration" element={<RestrictedRoute component={<Registration />} redirectTo='/contacts'/>} />
+        <Route path="/contacts" element={<PrivateRoute redirectTo="/login" component={<PhoneBooks />} />} />
       </Route>
     </Routes>
     )
