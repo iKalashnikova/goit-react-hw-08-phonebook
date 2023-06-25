@@ -1,14 +1,20 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { register } from '../redux/auth/authActions';
-import { Link, useNavigate } from 'react-router-dom'
+import { register } from '../../redux/auth/authActions';
+import {
+  FormContainer,
+  Form,
+  Label,
+  Input,
+  Button,
+  LoginLink,
+} from './registration.styled';
 
- const Registration = () => {
+const Registration = () => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
-// const navigate = useNavigate();
 
   const handleChange = ({ target: { name, value } }) => {
     name === 'email'
@@ -20,7 +26,7 @@ import { Link, useNavigate } from 'react-router-dom'
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log({name,  email, password });
+    console.log({ name, email, password });
     dispatch(register({ name, email, password }));
     setEmail('');
     setPassword('');
@@ -29,35 +35,35 @@ import { Link, useNavigate } from 'react-router-dom'
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Name
-          <input type="name" name="name" value={name} onChange={handleChange} />
-        </label>
-        <label>
-          Email
-          <input
+    <FormContainer>
+      <Form onSubmit={handleSubmit}>
+        <Label>
+          <Input type="name" name="name" value={name} onChange={handleChange} placeholder ='Name'/>
+        </Label>
+        <Label>
+          <Input
             type="email"
             name="email"
             value={email}
+            placeholder="Email"
             onChange={handleChange}
           />
-        </label>
-        <label>
-          <input
+        </Label>
+        <Label>
+          <Input
             type="password"
             name="password"
             value={password}
             onChange={handleChange}
+            placeholder='Password'
           />
-        </label>
-        <button type="submit" disabled={!email || !password || !name}>
+        </Label>
+        <Button type="submit" disabled={!email || !password || !name}>
           Sign up
-        </button>
-        <Link to="/Login"> Login</Link>
-      </form>
-    </div>
+        </Button>
+        <LoginLink to="/Login"> Login</LoginLink>
+      </Form>
+    </FormContainer>
   );
 };
 

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 
 export const Title = styled.h2`
-font-size: 48px;
+font-size: 32px;
   margin-bottom: 32px;
 `
 

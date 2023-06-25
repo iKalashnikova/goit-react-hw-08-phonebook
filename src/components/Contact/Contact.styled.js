@@ -29,5 +29,6 @@ export const DeleteBtn = styled.button`
   padding: 8px;
   font-size: 14px;
   cursor: pointer;
+  margin-left: 10px;
   
 `

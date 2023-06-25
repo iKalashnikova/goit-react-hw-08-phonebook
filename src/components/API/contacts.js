@@ -11,16 +11,16 @@ export const fetchContactsAPI = async () => {
   }
 };
 
-export const addContactAPI = async (contactData) => {
+export const addContactAPI = async contactData => {
   try {
     const response = await axios.post(API_URL, contactData);
-    return response.data
+    return response.data;
   } catch (error) {
     throw new Error('Failed to add contact');
   }
 };
 
-export const deleteContactAPI = async (contactId) => {
+export const deleteContactAPI = async contactId => {
   try {
     const response = await axios.delete(`${API_URL}/${contactId}`);
     return response.data;

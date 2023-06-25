@@ -1,10 +1,10 @@
 // import { useEffect } from "react";
 import PhoneBooks from './PhoneBooks/PhoneBooks';
 import { Route, Routes } from 'react-router-dom';
-import Login from './pages/login';
+import Login from './pages/login/login';
 import Layout from './Layout/Layout';
-import Registration from './pages/registration';
-import Home from './pages/home';
+import Registration from './pages/registration/registration';
+import Home from './pages/home/home';
 // import { useSelector } from 'react-redux';
 import { useAuth } from '../hooks/useAuth';
 import { useDispatch } from 'react-redux';
