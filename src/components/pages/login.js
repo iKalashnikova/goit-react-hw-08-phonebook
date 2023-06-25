@@ -1,12 +1,19 @@
-import  { useState,  } from "react";
-import {  useDispatch } from 'react-redux';
+import  { useEffect, useState,  } from "react";
+import {  useDispatch, useSelector } from 'react-redux';
 import {login} from '../redux/auth/authActions';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
  const Login =  () => {
     const dispatch = useDispatch();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    const isAuth = useSelector(state => state.auth.token);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        isAuth && navigate('/contacts')
+    }, [isAuth, navigate])
 
     const handleChange = ({target: {name, value}}) => {
         name==='email'?setEmail(value):setPassword(value);

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { register, login } from '../redux/auth/authActions';
+import { register } from '../redux/auth/authActions';
 import { Link, useNavigate } from 'react-router-dom'
 
  const Registration = () => {
@@ -8,7 +8,8 @@ import { Link, useNavigate } from 'react-router-dom'
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
-const navigate = useNavigate()
+const navigate = useNavigate();
+
   const handleChange = ({ target: { name, value } }) => {
     name === 'email'
       ? setEmail(value)
